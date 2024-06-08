@@ -11,7 +11,7 @@ class Materiel extends Model
     protected $keyType = 'string';
     protected $primaryKey = 'type';
     protected $table = 'materiel';
-    protected $fillable = ['type', 'inventaire', 'serie', 'description', 'ram', 'processeur', 'hdd', 'noms_employers'];
+    protected $fillable = ['type', 'inventaire', 'serie', 'description', 'ram', 'processeur', 'hdd', 'noms_employers', 'anciennet'];
     use HasFactory;
 }
 

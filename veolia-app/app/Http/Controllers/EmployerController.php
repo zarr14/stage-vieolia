@@ -7,9 +7,19 @@ use Illuminate\Http\Request;
 
 class EmployerController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $employers = Employer::all();
+        $query = Employer::query();
+
+        if ($request->filled('search')) {
+            $query->where('noms', 'like', '%' . $request->search . '%');
+        }
+
+
+        if ($request->filled('site')) {
+            $query->where('site', $request->site);  // Adjust this line based on your actual database schema
+        }
+        $employers = $query->paginate(35); // Ensure you are using paginate() method
         return view('employers.index', compact('employers'));
     }
 
